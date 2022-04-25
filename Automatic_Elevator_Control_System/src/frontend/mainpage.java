@@ -1,21 +1,24 @@
 package frontend;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.SwingConstants;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class mainpage extends JFrame {
 
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
+
+	static boolean mail_check = false;
 
 	/**
 	 * Launch the application.
@@ -33,6 +36,10 @@ public class mainpage extends JFrame {
 		});
 	}
 
+	public static void set_val(boolean val) {
+		mail_check = val;
+	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -46,33 +53,57 @@ public class mainpage extends JFrame {
 		panel.setBackground(Color.YELLOW);
 		panel.setBounds(0, 0, 204, 356);
 		contentPane.add(panel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("AUTOMATIC");
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		
+
 		JLabel lblNewLabel_2 = new JLabel("ELEVATOR");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		panel.add(lblNewLabel_2);
-		
+
 		JLabel lblNewLabel = new JLabel("SYSTEM");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		panel.add(lblNewLabel);
-		
-		JButton btnNewButton = new JButton("Configure");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(258, 43, 154, 33);
-		contentPane.add(btnNewButton);
-		
-		JButton btnInitiate = new JButton("Initiate");
-		btnInitiate.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnInitiate.setBounds(258, 117, 154, 33);
-		contentPane.add(btnInitiate);
-		
-		JButton btnNewButton_1_1 = new JButton("Log Report");
-		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_1_1.setBounds(258, 191, 154, 33);
-		contentPane.add(btnNewButton_1_1);
+
+		JButton configure = new JButton("Configure");
+		configure.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				configure btn1 = new configure();
+				btn1.main(null);
+			}
+		});
+		configure.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		configure.setBounds(258, 43, 154, 33);
+		contentPane.add(configure);
+
+		JButton initiate = new JButton("Initiate");
+		initiate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (mail_check == true) {
+					initiate btn1 = new initiate();
+					// btn1.main(null);
+				} else {
+					javax.swing.JOptionPane.showMessageDialog(initiate, "Set valid admin Email ID in Configure");
+				}
+			}
+		});
+		initiate.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		initiate.setBounds(258, 117, 154, 33);
+		contentPane.add(initiate);
+
+		JButton report = new JButton("Log Report");
+		report.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				log btn1 = new log();
+				// btn1.main(null);
+			}
+		});
+		report.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		report.setBounds(258, 191, 154, 33);
+		contentPane.add(report);
+
 	}
 }

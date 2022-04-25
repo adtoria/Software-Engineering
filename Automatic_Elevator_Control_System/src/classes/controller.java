@@ -1,6 +1,12 @@
 package classes;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.TreeSet;
 
 /**
  *
@@ -8,33 +14,35 @@ import java.util.*;
  */
 public class controller extends main {
 
+	public static int val = 0;
 	Timer t = new Timer();
-	protected door door_status = door.OPEN;
+	protected static door door_status = door.OPENED;
 
-	protected int floor_total = 10;
+	protected static int floor_total = 10;
 	protected double weight = 0.00;
 	protected int persons = 0;
 
 	protected static List<Double> weight_in_elevator = new ArrayList<Double>();
-	protected direction dr;
+	protected static direction dr = direction.ATHALT;
 
-	protected boolean coming = false;
-	protected int current = 0;
+	protected static boolean coming = false;
+	public static int current = 1;
 
 	// treeset to maintain ascending order
-	public TreeSet<Integer> up;
-	public TreeSet<Integer> down;
-	public TreeSet<Integer> temp;
+	public static TreeSet<Integer> up;
+	public static TreeSet<Integer> down;
+	public static TreeSet<Integer> temp;
 
 	protected static List<String> id = new ArrayList<String>();
-	protected boolean sos = false;
+	public static boolean sos = false;
 
 	public controller() {
 
+		int val;
 		dr = direction.ATHALT;
 		this.up = new TreeSet<>();
 		this.temp = new TreeSet<Integer>();
-		this.door_status = door.CLOSE;
+		this.door_status = door.CLOSED;
 		this.down = new TreeSet<>(new Comparator<Integer>() {
 			@Override
 			public int compare(Integer o1, Integer o2) {
@@ -52,8 +60,8 @@ public class controller extends main {
 		return dr;
 	}
 
-	public direction get_Direction() {
-		return this.dr;
+	public static direction get_Direction() {
+		return dr;
 	}
 
 	public int get_floor_count() {
@@ -64,11 +72,11 @@ public class controller extends main {
 		return sos;
 	}
 
-	public int current_floor() {
+	public static int current_floor() {
 		return current;
 	}
 
-	public boolean get_coming() {
+	public static boolean get_coming() {
 		return coming;
 	}
 
@@ -130,7 +138,7 @@ public class controller extends main {
 		current -= 1;
 	}
 
-	public door door_check() {
+	public static door door_check() {
 		return door_status;
 	}
 
@@ -170,7 +178,7 @@ public class controller extends main {
 		return down.size();
 	}
 
-	public void add_temp(int k) {
+	public static void add_temp(int k) {
 		temp.add(k);
 	}
 
@@ -182,7 +190,7 @@ public class controller extends main {
 		return -1;
 	}
 
-	public void add_dest(Integer p) {
+	public static void add_dest(Integer p) {
 		if (sos && temp.size() == 0) {
 			dr = direction.ATHALT;
 			up.forEach(a -> {
@@ -239,9 +247,10 @@ public class controller extends main {
 		return true;
 	}
 
-	public void get_newfloor() {
+	public static void get_newfloor() {
 		Random r = new Random();
 		int c = r.nextInt(floor_total);
+		val = c;
 		System.out.println("New Floor- " + c);
 		if (sos == true)
 			add_temp(c);
@@ -249,7 +258,7 @@ public class controller extends main {
 			add_dest(c);
 	}
 
-	public void get_sos_floor() {
+	public static void get_sos_floor() {
 		sos = true;
 		Random r = new Random();
 		int c = r.nextInt(floor_total);
@@ -273,7 +282,7 @@ public class controller extends main {
 	};
 
 	@Override
-	protected void finalize() throws Throwable {
+	public void finalize() throws Throwable {
 		// TODO Auto-generated method
 		t.cancel();
 		movement.cancel();

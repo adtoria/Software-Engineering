@@ -1,30 +1,27 @@
 package classes;
 
 import java.io.File;
-import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.time.format.DateTimeFormatter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author Group8
  */
 public class report_generate {
+
 	LocalDateTime time;
 	String formatter;
-	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss");
+	// SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
 	File f = new File("src/report.txt");
 	FileWriter mywriter;
 
 	public report_generate(int fl, int in, int out, double weight, boolean sos, boolean failure) {
-		report(fl, in, out, weight, sos, failure);
-	}
-
-	public void report(int fl, int in, int out, double weight, boolean sos, boolean failure) {
 		time = LocalDateTime.now();
 		formatter = df.format(time);
 
@@ -35,7 +32,7 @@ public class report_generate {
 			to_print += "\t EMERGENCY SITUATION";
 		}
 		to_print += "\n\n";
-
+		System.out.println("Yes");
 		try {
 			f.createNewFile();
 			PrintWriter p = new PrintWriter(new FileOutputStream(f, true));
@@ -49,7 +46,6 @@ public class report_generate {
 		if (failure) {
 			backup(failure);
 		}
-
 	}
 
 	private void backup(boolean failure) {
@@ -70,7 +66,7 @@ public class report_generate {
 			p.close();
 
 		} catch (Exception e) {
-			System.out.println("ERROR !!!");
+			System.out.println("ERROR BUDDY!!!");
 		}
 	}
 }
