@@ -1,0 +1,14 @@
+23-04-2022 11:51:14 : 	 Floor Number 10 	 Enters 23 	 Exits 23 	 Weight 12.0
+
+23-04-2022 11:52:38 : 	 Floor Number 3 	 Enters 5 	 Exits 0 	 Weight 458.76
+
+23-04-2022 11:52:49 : 	 Floor Number 8 	 Enters 0 	 Exits 2 	 Weight 277.73
+
+23-04-2022 11:53:07 : 	 Floor Number 0 	 Enters 0 	 Exits 0 	 Weight 277.73
+
+23-04-2022 11:55:22 : 	 Floor Number 10 	 Enters 23 	 Exits 23 	 Weight 12.0
+
+23-04-2022 11:55:48 : 	 Floor Number 10 	 Enters 23 	 Exits 23 	 Weight 12.0
+
+23-04-2022 11:59:36 : 	 Floor Number 10 	 Enters 23 	 Exits 23 	 Weight 12.0
+
