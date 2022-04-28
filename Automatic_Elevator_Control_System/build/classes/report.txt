@@ -20,17 +20,3 @@
 
 24-04-2022 01:21:09 : 	 Floor Number 5 	 Enters 3 	 Exits 0 	 Weight 661.8
 
-27-04-2022 11:09:59 : 	 Floor Number 2 	 Enters 4 	 Exits 0 	 Weight 430.69
-
-27-04-2022 11:10:08 : 	 Floor Number 4 	 Enters 2 	 Exits 0 	 Weight 608.95
-
-27-04-2022 11:10:14 : 	 Floor Number 1 	 Enters 0 	 Exits 0 	 Weight 608.95
-
-27-04-2022 11:12:50 : 	 Floor Number 5 	 Enters 0 	 Exits 0 	 Weight 0.0
-
-28-04-2022 03:31:38 : 	 Floor Number 8 	 Enters 4 	 Exits 0 	 Weight 361.8
-
-28-04-2022 03:31:44 : 	 Floor Number 7 	 Enters 1 	 Exits 0 	 Weight 509.49
-
-28-04-2022 03:40:17 : 	 Floor Number 2 	 Enters 0 	 Exits 0 	 Weight 0.0
-
