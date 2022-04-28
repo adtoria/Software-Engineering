@@ -57,7 +57,6 @@ public class initiate extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
-
 		inputPersons = new javax.swing.JDialog();
 		jPanel3 = new javax.swing.JPanel();
 		jLabel3 = new javax.swing.JLabel();
