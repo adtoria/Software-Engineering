@@ -46,70 +46,76 @@ public class configure extends JFrame {
 	 * Create the frame.
 	 */
 	public configure() {
+		setResizable(false);
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 700, 457);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(224, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel weight_print = new JLabel("Not a value");
-		weight_print.setBounds(295, 155, 98, 13);
+		weight_print.setFont(new Font("Rockwell", Font.PLAIN, 13));
+		weight_print.setBounds(433, 176, 243, 30);
 		contentPane.add(weight_print);
 		weight_print.setVisible(false);
 
 		JLabel mail_print = new JLabel("New label");
-		mail_print.setBounds(403, 171, 46, 13);
+		mail_print.setFont(new Font("Rockwell", Font.PLAIN, 13));
+		mail_print.setBounds(433, 216, 195, 14);
 		contentPane.add(mail_print);
 		mail_print.setVisible(false);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.YELLOW);
-		panel.setBounds(0, 0, 463, 47);
+		panel.setBackground(new Color(135, 206, 250));
+		panel.setBounds(0, 0, 686, 47);
 		contentPane.add(panel);
 
 		JLabel lblNewLabel = new JLabel("CONFIGURE");
 		lblNewLabel.setBackground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setFont(new Font("Rockwell", Font.PLAIN, 25));
 		panel.add(lblNewLabel);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.YELLOW);
-		panel_1.setBounds(0, 42, 436, 29);
+		panel_1.setBackground(new Color(224, 255, 255));
+		panel_1.setBounds(0, 60, 699, 39);
 		contentPane.add(panel_1);
 
 		JLabel lblNewLabel_1 = new JLabel("Set the threshold values for number of people and weight");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		panel_1.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("Rockwell", Font.PLAIN, 23));
 
 		JLabel lblNewLabel_2 = new JLabel("Maximum number of people");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(38, 99, 195, 22);
+		lblNewLabel_2.setFont(new Font("Rockwell", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(38, 146, 247, 22);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_2_1 = new JLabel("Maximum Weight (in Kg)");
-		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_1.setBounds(38, 130, 195, 22);
+		lblNewLabel_2_1.setFont(new Font("Rockwell", Font.PLAIN, 18));
+		lblNewLabel_2_1.setBounds(38, 179, 247, 22);
 		contentPane.add(lblNewLabel_2_1);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("Set Admin Mail ID");
-		lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_1_1.setBounds(38, 164, 195, 22);
+		lblNewLabel_2_1_1.setFont(new Font("Rockwell", Font.PLAIN, 18));
+		lblNewLabel_2_1_1.setBounds(38, 211, 195, 22);
 		contentPane.add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("Update Emergency IDs");
-		lblNewLabel_2_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2_1_1_1.setBounds(38, 196, 195, 22);
+		lblNewLabel_2_1_1_1.setFont(new Font("Rockwell", Font.PLAIN, 18));
+		lblNewLabel_2_1_1_1.setBounds(38, 248, 221, 22);
 		contentPane.add(lblNewLabel_2_1_1_1);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		comboBox.setFont(new Font("Rockwell", Font.PLAIN, 16));
 		comboBox.setModel(new DefaultComboBoxModel(
 				new String[] { "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" }));
-		comboBox.setBounds(295, 108, 98, 21);
+		comboBox.setBounds(325, 147, 98, 21);
 		contentPane.add(comboBox);
 
 		textField = new JTextField();
+
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = textField.getText();
@@ -133,8 +139,8 @@ public class configure extends JFrame {
 
 			}
 		});
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField.setBounds(295, 139, 98, 19);
+		textField.setFont(new Font("Rockwell", Font.PLAIN, 16));
+		textField.setBounds(325, 180, 98, 19);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
@@ -157,13 +163,13 @@ public class configure extends JFrame {
 
 			}
 		});
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField_1.setFont(new Font("Rockwell", Font.PLAIN, 16));
 		textField_1.setColumns(10);
-		textField_1.setBounds(295, 168, 98, 19);
+		textField_1.setBounds(325, 215, 98, 19);
 		contentPane.add(textField_1);
 
 		JButton updateButton = new JButton("Update");
-		updateButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		updateButton.setFont(new Font("Rockwell", Font.PLAIN, 16));
 		updateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (weight_valid == false || email_valid == false) {
@@ -192,7 +198,7 @@ public class configure extends JFrame {
 
 			}
 		});
-		updateButton.setBounds(178, 232, 85, 21);
+		updateButton.setBounds(307, 336, 98, 39);
 		contentPane.add(updateButton);
 
 		JButton editButton = new JButton("Edit Here");
@@ -202,8 +208,8 @@ public class configure extends JFrame {
 				eid.main(null);
 			}
 		});
-		editButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		editButton.setBounds(295, 199, 98, 21);
+		editButton.setFont(new Font("Rockwell", Font.PLAIN, 14));
+		editButton.setBounds(325, 250, 98, 21);
 		contentPane.add(editButton);
 
 	}

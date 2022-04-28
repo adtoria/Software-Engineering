@@ -5,10 +5,22 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import classes.controller;
 import classes.direction;
@@ -26,6 +38,7 @@ public class initiate extends javax.swing.JFrame {
 	 * Creates new form Initiate
 	 */
 	public initiate() {
+		setResizable(false);
 		initComponents();
 		inputPersons.setVisible(false);
 		executor.scheduleAtFixedRate(ElevatorUpdated, 0, 500, TimeUnit.MILLISECONDS);
@@ -62,12 +75,15 @@ public class initiate extends javax.swing.JFrame {
 		jPanel1 = new javax.swing.JPanel();
 		jPanel2 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
+		jLabel1.setBackground(new Color(0, 0, 128));
 		jLabel2 = new javax.swing.JLabel();
+		jLabel2.setBackground(new Color(0, 191, 255));
 		peopleLabel = new javax.swing.JLabel();
 		floorLabel = new javax.swing.JLabel();
 		weightLabel = new javax.swing.JLabel();
 		doorLabel = new javax.swing.JLabel();
 		jLabel4 = new javax.swing.JLabel();
+		jLabel4.setForeground(new Color(0, 0, 128));
 		people = new javax.swing.JTextField();
 		weight = new javax.swing.JTextField();
 		doorStatus = new javax.swing.JTextField();
@@ -93,21 +109,21 @@ public class initiate extends javax.swing.JFrame {
 		jPanel3.setBackground(new java.awt.Color(45, 64, 89));
 
 		jLabel3.setBackground(new java.awt.Color(238, 238, 238));
-		jLabel3.setFont(new java.awt.Font("Dubai", 1, 24)); // NOI18N
+		jLabel3.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
 		jLabel3.setForeground(new java.awt.Color(238, 238, 238));
 		jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		jLabel3.setText("Enter Persons Entering / Leaving");
 
-		jLabel5.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
+		jLabel5.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
 		jLabel5.setForeground(new java.awt.Color(235, 235, 234));
 		jLabel5.setText("Entering ");
 
-		jLabel6.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
+		jLabel6.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
 		jLabel6.setForeground(new java.awt.Color(238, 238, 238));
 		jLabel6.setText("Exiting");
 
 		exitingInput.setBackground(new java.awt.Color(238, 238, 238));
-		exitingInput.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		exitingInput.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		exitingInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6",
 				"7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
 		exitingInput.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -121,7 +137,7 @@ public class initiate extends javax.swing.JFrame {
 		});
 
 		done.setBackground(new java.awt.Color(45, 64, 89));
-		done.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		done.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		done.setForeground(new java.awt.Color(238, 238, 238));
 		done.setText("Done");
 		done.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +147,7 @@ public class initiate extends javax.swing.JFrame {
 		});
 
 		enteringInput.setBackground(new java.awt.Color(238, 238, 238));
-		enteringInput.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		enteringInput.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		enteringInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6",
 				"7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
 		enteringInput.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -203,18 +219,18 @@ public class initiate extends javax.swing.JFrame {
 
 		jPanel4.setBackground(new java.awt.Color(45, 64, 89));
 
-		jLabel7.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		jLabel7.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		jLabel7.setForeground(new java.awt.Color(238, 238, 238));
 		jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		jLabel7.setText("Validate Emergency, Enter your ID:");
 
-		validateEmId.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
+		validateEmId.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 		validateEmId.setForeground(new java.awt.Color(238, 238, 238));
 		validateEmId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		validateEmId.setText("Not Valid !");
 
 		jButton1.setBackground(new java.awt.Color(238, 238, 238));
-		jButton1.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
+		jButton1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 		jButton1.setText("OK");
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,19 +291,19 @@ public class initiate extends javax.swing.JFrame {
 			}
 		});
 
-		jPanel1.setBackground(new java.awt.Color(240, 123, 63));
+		jPanel1.setBackground(new Color(224, 255, 255));
 
-		jPanel2.setBackground(new java.awt.Color(45, 64, 89));
+		jPanel2.setBackground(new Color(0, 191, 255));
 		jPanel2.setForeground(new java.awt.Color(238, 238, 238));
 		jPanel2.setPreferredSize(new java.awt.Dimension(536, 194));
 
-		jLabel1.setFont(new java.awt.Font("Dubai", 1, 48)); // NOI18N
-		jLabel1.setForeground(new java.awt.Color(238, 238, 238));
+		jLabel1.setFont(new java.awt.Font("Rockwell", 1, 48)); // NOI18N
+		jLabel1.setForeground(new Color(0, 0, 128));
 		jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		jLabel1.setText("Initiated");
 
-		jLabel2.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
-		jLabel2.setForeground(new java.awt.Color(238, 238, 238));
+		jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+		jLabel2.setForeground(new Color(0, 0, 128));
 		jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		jLabel2.setText("The Automatic Elevator has been initiated");
 
@@ -309,72 +325,72 @@ public class initiate extends javax.swing.JFrame {
 						.addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
 						.addGap(43, 43, 43)));
 
-		peopleLabel.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
+		peopleLabel.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
 		peopleLabel.setText("Number of Persons");
 
-		floorLabel.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
+		floorLabel.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
 		floorLabel.setText("Floor Number");
 
-		weightLabel.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
+		weightLabel.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
 		weightLabel.setText("Weight");
 
-		doorLabel.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
+		doorLabel.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
 		doorLabel.setText("Door Status");
 
-		jLabel4.setBackground(new java.awt.Color(234, 84, 85));
-		jLabel4.setFont(new java.awt.Font("Dubai", 1, 30)); // NOI18N
+		jLabel4.setBackground(new Color(0, 0, 128));
+		jLabel4.setFont(new java.awt.Font("Rockwell", 1, 30)); // NOI18N
 		jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		jLabel4.setText(" Overall Status ");
 		jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
 		people.setEditable(false);
 		people.setBackground(new java.awt.Color(247, 251, 252));
-		people.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		people.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		people.setText("0");
 
 		weight.setEditable(false);
 		weight.setBackground(new java.awt.Color(247, 251, 252));
-		weight.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		weight.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		weight.setText("0");
 
 		doorStatus.setEditable(false);
 		doorStatus.setBackground(new java.awt.Color(247, 251, 252));
-		doorStatus.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		doorStatus.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		doorStatus.setText("Closed");
 
 		floor.setEditable(false);
 		floor.setBackground(new java.awt.Color(247, 251, 252));
-		floor.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		floor.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		floor.setText("0");
 
 		entering.setBackground(new java.awt.Color(184, 222, 111));
-		entering.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
-		entering.setForeground(new java.awt.Color(255, 248, 205));
+		entering.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
+		entering.setForeground(new Color(0, 0, 128));
 		entering.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		entering.setText("People Entering");
 		entering.setEnabled(false);
 
-		overload.setFont(new java.awt.Font("Dubai", 1, 24)); // NOI18N
-		overload.setForeground(new java.awt.Color(255, 255, 0));
+		overload.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+		overload.setForeground(new Color(220, 20, 60));
 		overload.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		overload.setText("Overload");
 		overload.setEnabled(false);
 
-		exiting.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
-		exiting.setForeground(new java.awt.Color(255, 248, 205));
+		exiting.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
+		exiting.setForeground(new Color(0, 0, 128));
 		exiting.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		exiting.setText("People Exiting");
 		exiting.setEnabled(false);
 
-		moving.setFont(new java.awt.Font("Dubai", 1, 20)); // NOI18N
-		moving.setForeground(new java.awt.Color(255, 248, 205));
+		moving.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
+		moving.setForeground(new Color(0, 0, 128));
 		moving.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		moving.setText("Lift Moving");
 		moving.setEnabled(false);
 
-		generate.setBackground(new java.awt.Color(45, 64, 89));
-		generate.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
-		generate.setForeground(new java.awt.Color(238, 238, 238));
+		generate.setBackground(new Color(0, 0, 128));
+		generate.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+		generate.setForeground(new Color(255, 255, 255));
 		generate.setText("Generate Floor Request");
 		generate.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,8 +403,8 @@ public class initiate extends javax.swing.JFrame {
 		elevatorUp.setForeground(new java.awt.Color(248, 248, 248));
 		elevatorUp.setEnabled(false);
 
-		powerCut.setBackground(new java.awt.Color(102, 255, 0));
-		powerCut.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		powerCut.setBackground(new Color(220, 20, 60));
+		powerCut.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		powerCut.setForeground(new java.awt.Color(0, 0, 153));
 		powerCut.setText("Power Cut");
 		powerCut.addActionListener(new java.awt.event.ActionListener() {
@@ -397,9 +413,9 @@ public class initiate extends javax.swing.JFrame {
 			}
 		});
 
-		generateEmergency.setBackground(new java.awt.Color(45, 64, 89));
-		generateEmergency.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
-		generateEmergency.setForeground(new java.awt.Color(238, 238, 238));
+		generateEmergency.setBackground(new Color(0, 0, 128));
+		generateEmergency.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+		generateEmergency.setForeground(new Color(255, 255, 255));
 		generateEmergency.setText("Emergency Floor Request");
 		generateEmergency.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -407,156 +423,116 @@ public class initiate extends javax.swing.JFrame {
 			}
 		});
 
-		Emergency.setFont(new java.awt.Font("Dubai", 1, 24)); // NOI18N
-		Emergency.setForeground(new java.awt.Color(255, 255, 0));
+		Emergency.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+		Emergency.setForeground(new Color(220, 20, 60));
 		Emergency.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		Emergency.setText("Emergency");
 		Emergency.setEnabled(false);
 
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-						jPanel1Layout.createSequentialGroup().addGap(288, 288, 288)
-								.addComponent(exiting, javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGap(287, 287, 287))
-				.addGroup(jPanel1Layout.createSequentialGroup().addGap(250, 250, 250)
-						.addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-						.addGap(254, 254, 254))
-				.addGroup(jPanel1Layout.createSequentialGroup().addGap(41, 41, 41).addGroup(jPanel1Layout
-						.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+				.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+				.addGroup(jPanel1Layout.createSequentialGroup().addGap(288)
+						.addComponent(exiting, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE).addGap(287))
+				.addGroup(jPanel1Layout.createSequentialGroup().addGap(41).addGroup(jPanel1Layout
+						.createParallelGroup(Alignment.LEADING)
 						.addGroup(jPanel1Layout.createSequentialGroup()
-								.addComponent(weightLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGap(121, 121, 121))
+								.addComponent(weightLabel, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE).addGap(121))
 						.addGroup(jPanel1Layout.createSequentialGroup()
-								.addComponent(entering, javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGap(120, 120, 120))
-						.addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(jPanel1Layout.createSequentialGroup().addGap(27, 27, 27)
-										.addGroup(jPanel1Layout
-												.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-												.addComponent(generate, javax.swing.GroupLayout.DEFAULT_SIZE,
-														javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(generateEmergency, javax.swing.GroupLayout.DEFAULT_SIZE,
-														javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-								.addGroup(jPanel1Layout.createSequentialGroup()
-										.addComponent(peopleLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addGap(69, 69, 69)))
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
-										.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-										.addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
-												.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-												.addComponent(weight, javax.swing.GroupLayout.DEFAULT_SIZE, 104,
-														Short.MAX_VALUE)
-												.addComponent(people)).addGap(31, 31, 31)
-												.addGroup(jPanel1Layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(jPanel1Layout.createSequentialGroup()
-																.addComponent(doorLabel,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		Short.MAX_VALUE)
-																.addGap(18, 18, 18))
-														.addComponent(floorLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-												.addGap(20, 20, 20)
-												.addGroup(jPanel1Layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(jPanel1Layout.createSequentialGroup()
-																.addComponent(floor,
-																		javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addGroup(jPanel1Layout.createParallelGroup(
-																		javax.swing.GroupLayout.Alignment.LEADING)
-																		.addComponent(elevatorUp,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				31,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addComponent(elevatorDown,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				31,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)))
-														.addComponent(doorStatus,
-																javax.swing.GroupLayout.PREFERRED_SIZE, 94,
-																javax.swing.GroupLayout.PREFERRED_SIZE)))
-										.addGroup(jPanel1Layout.createSequentialGroup().addGap(274, 274, 274)
-												.addComponent(moving, javax.swing.GroupLayout.DEFAULT_SIZE, 156,
-														Short.MAX_VALUE)))
-										.addGap(31, 31, 31))
-								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-										jPanel1Layout.createSequentialGroup().addComponent(powerCut).addGap(128, 128,
-												128))))
-				.addGroup(jPanel1Layout.createSequentialGroup().addGap(146, 146, 146)
-						.addComponent(overload, javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGap(114, 114, 114)
-						.addComponent(Emergency, javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		jPanel1Layout
-				.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addComponent(entering, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE).addGap(120))
 						.addGroup(jPanel1Layout.createSequentialGroup()
-								.addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(34, 34, 34)
-								.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+										.addGroup(jPanel1Layout.createSequentialGroup().addGap(27)
+												.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING, false)
+														.addComponent(generate, GroupLayout.DEFAULT_SIZE,
+																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+														.addComponent(generateEmergency, GroupLayout.DEFAULT_SIZE,
+																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 										.addGroup(jPanel1Layout.createSequentialGroup()
-												.addGroup(jPanel1Layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(peopleLabel)
-														.addComponent(people, javax.swing.GroupLayout.PREFERRED_SIZE,
-																31, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(doorLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+												.addComponent(peopleLabel, GroupLayout.DEFAULT_SIZE, 224,
+														Short.MAX_VALUE)
+												.addGap(69)))
+								.addPreferredGap(ComponentPlacement.RELATED)))
+						.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING).addGroup(jPanel1Layout
+								.createSequentialGroup().addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+										.addGroup(jPanel1Layout.createSequentialGroup().addGroup(
+												jPanel1Layout.createParallelGroup(Alignment.LEADING, false)
+														.addComponent(weight, GroupLayout.DEFAULT_SIZE, 104,
+																Short.MAX_VALUE)
+														.addComponent(people))
+												.addGap(31)
+												.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING).addGroup(
+														jPanel1Layout.createSequentialGroup()
+																.addComponent(doorLabel, GroupLayout.DEFAULT_SIZE, 164,
+																		Short.MAX_VALUE)
+																.addGap(18))
 														.addComponent(
-																doorStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
-												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-												.addGroup(jPanel1Layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(jPanel1Layout
-																.createParallelGroup(
-																		javax.swing.GroupLayout.Alignment.BASELINE)
-																.addComponent(weightLabel)
-																.addComponent(weight,
-																		javax.swing.GroupLayout.PREFERRED_SIZE, 31,
-																		javax.swing.GroupLayout.PREFERRED_SIZE))
+																floorLabel, GroupLayout.DEFAULT_SIZE, 182,
+																Short.MAX_VALUE))
+												.addGap(20)
+												.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
 														.addGroup(jPanel1Layout.createSequentialGroup()
-																.addComponent(elevatorUp)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(elevatorDown)))
-												.addGap(65, 65, 65))
-										.addGroup(jPanel1Layout.createSequentialGroup().addGap(53, 53, 53)
-												.addGroup(jPanel1Layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(floorLabel).addComponent(floor,
-																javax.swing.GroupLayout.PREFERRED_SIZE, 31,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
-												.addGap(66, 66, 66)))
-								.addComponent(jLabel4).addGap(18, 18, 18)
-								.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
-												.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+																.addComponent(floor, GroupLayout.PREFERRED_SIZE, 60,
+																		GroupLayout.PREFERRED_SIZE)
+																.addPreferredGap(ComponentPlacement.RELATED)
+																.addGroup(jPanel1Layout
+																		.createParallelGroup(Alignment.LEADING)
+																		.addComponent(elevatorUp,
+																				GroupLayout.PREFERRED_SIZE, 31,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addComponent(elevatorDown,
+																				GroupLayout.PREFERRED_SIZE, 31,
+																				GroupLayout.PREFERRED_SIZE)))
+														.addComponent(doorStatus, GroupLayout.PREFERRED_SIZE, 94,
+																GroupLayout.PREFERRED_SIZE)))
+										.addGroup(jPanel1Layout.createSequentialGroup().addGap(274).addComponent(moving,
+												GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)))
+								.addGap(31))
+								.addGroup(jPanel1Layout.createSequentialGroup().addComponent(powerCut).addGap(128))))
+				.addGroup(jPanel1Layout.createSequentialGroup().addGap(146)
+						.addComponent(overload, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE).addGap(114)
+						.addComponent(Emergency, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+						.addContainerGap(106, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, jPanel1Layout.createSequentialGroup().addGap(250)
+						.addComponent(jLabel4, GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE).addGap(254)));
+		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING).addGroup(jPanel1Layout
+				.createSequentialGroup()
+				.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGap(34)
+				.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING).addGroup(jPanel1Layout
+						.createSequentialGroup()
+						.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE).addComponent(peopleLabel)
+								.addComponent(people, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+								.addComponent(doorLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE)
+								.addComponent(doorStatus, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+								.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(weightLabel).addComponent(weight, GroupLayout.PREFERRED_SIZE, 31,
+												GroupLayout.PREFERRED_SIZE))
+								.addGroup(jPanel1Layout.createSequentialGroup().addComponent(elevatorUp)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(elevatorDown)))
+						.addGap(65))
+						.addGroup(jPanel1Layout.createSequentialGroup().addGap(53)
+								.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE).addComponent(floorLabel)
+										.addComponent(floor, GroupLayout.PREFERRED_SIZE, 31,
+												GroupLayout.PREFERRED_SIZE))
+								.addGap(66)))
+				.addGap(56).addGroup(
+						jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(jPanel1Layout.createSequentialGroup()
+										.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
 												.addComponent(entering).addComponent(exiting).addComponent(moving))
-												.addGap(18, 18, 18)
-												.addGroup(jPanel1Layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(overload).addComponent(Emergency))
-												.addGap(18, 18, 18).addComponent(generate).addGap(18, 18, 18)
-												.addComponent(generateEmergency).addGap(29, 29, 29))
-										.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout
-												.createSequentialGroup().addComponent(powerCut).addGap(64, 64, 64)))));
+										.addGap(18)
+										.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+												.addComponent(overload).addComponent(Emergency))
+										.addGap(18).addComponent(generate).addGap(18).addComponent(generateEmergency)
+										.addGap(29))
+								.addGroup(jPanel1Layout.createSequentialGroup().addComponent(powerCut).addGap(64))))
+				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+						.addContainerGap(359, Short.MAX_VALUE).addComponent(jLabel4).addGap(270)));
+		jPanel1.setLayout(jPanel1Layout);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -633,9 +609,49 @@ public class initiate extends javax.swing.JFrame {
 
 //			log log1 = new log();
 
+			String host = "smtp.gmail.com";
+			final String user = "iit2020119@iiita.ac.in";
+			final String password = "Abhinandan@2003";
+
+			String to = "iit2020142@iiita.ac.in";
+
+			Properties props = new Properties();
+			props.put("mail.smtp.starttls.enable", "true");
+			props.put("mail.smtp.host", host);
+			props.put("mail.smtp.user", user);
+			props.put("mail.smtp.password", password);
+			props.put("mail.smtp.port", "587");
+			props.put("mail.smtp.auth", "true");
+
+			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+				@Override
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(user, password);
+				}
+			});
+
+			try {
+				MimeMessage mailMessage = new MimeMessage(session);
+				mailMessage.setFrom(new InternetAddress(user));
+				mailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+				mailMessage.setSubject("Need of Power Backup");
+				mailMessage.setText("Urgent Power Backup Needed in CC3 building !!!");
+
+				Transport.send(mailMessage);
+
+				System.out.println("message sent!");
+
+			} catch (MessagingException mex) {
+				System.out.println(mex);
+				System.out.println("Error: unable to send message....");
+			}
+
 			emergencycall email = new emergencycall();
 			email.run();
-		} else {
+
+		} else
+
+		{
 			elevator.incoming(false);
 			powerCut.setBackground(new Color(102, 255, 0));
 			generate.setEnabled(true);
@@ -643,7 +659,6 @@ public class initiate extends javax.swing.JFrame {
 
 			log log2 = new log();
 		}
-
 	}
 
 	private void generateEmergencyActionPerformed(java.awt.event.ActionEvent evt) {

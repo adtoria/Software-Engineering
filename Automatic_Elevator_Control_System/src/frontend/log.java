@@ -1,5 +1,6 @@
 package frontend;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
@@ -18,6 +19,7 @@ public class log extends javax.swing.JFrame {
 	ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
 	public log() {
+		setResizable(false);
 		initComponents();
 		setVisible(true);
 		setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
@@ -39,8 +41,10 @@ public class log extends javax.swing.JFrame {
 		jPanel1 = new javax.swing.JPanel();
 		jPanel2 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
+		jLabel1.setBackground(new Color(0, 0, 128));
 		jScrollPane1 = new javax.swing.JScrollPane();
 		reportText = new javax.swing.JTextArea();
+		reportText.setBackground(new Color(240, 255, 255));
 		from = new com.toedter.calendar.JDateChooser();
 		to = new com.toedter.calendar.JDateChooser();
 		jLabel2 = new javax.swing.JLabel();
@@ -48,12 +52,12 @@ public class log extends javax.swing.JFrame {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		jPanel1.setBackground(new java.awt.Color(240, 123, 63));
+		jPanel1.setBackground(new Color(224, 255, 255));
 
-		jPanel2.setBackground(new java.awt.Color(45, 64, 89));
+		jPanel2.setBackground(new Color(0, 191, 255));
 
-		jLabel1.setFont(new java.awt.Font("Dubai", 1, 48)); // NOI18N
-		jLabel1.setForeground(new java.awt.Color(238, 238, 238));
+		jLabel1.setFont(new java.awt.Font("Rockwell", 1, 48)); // NOI18N
+		jLabel1.setForeground(new Color(0, 0, 128));
 		jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		jLabel1.setText("Log Report");
 
@@ -76,11 +80,11 @@ public class log extends javax.swing.JFrame {
 
 		to.setDateFormatString("dd-MM-yyyy");
 
-		jLabel2.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 		jLabel2.setText("From");
 
-		jLabel3.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
+		jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 		jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 		jLabel3.setText("To");
 
