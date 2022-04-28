@@ -611,7 +611,7 @@ public class initiate extends javax.swing.JFrame {
 
 			String host = "smtp.gmail.com";
 			final String user = "iit2020119@iiita.ac.in";
-			final String password = "Abhinandan@2003";
+			final String password = "*******";
 
 			String to = "iit2020142@iiita.ac.in";
 
