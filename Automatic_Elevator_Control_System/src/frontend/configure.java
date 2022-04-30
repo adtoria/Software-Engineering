@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 
+import javax.mail.internet.InternetAddress;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -158,9 +159,22 @@ public class configure extends JFrame {
 					mail_print.setText("Not a valid Mail id");
 					mail_print.setVisible(true);
 					email_valid = false;
-
 				}
+				boolean ans = true;
+				try {
+					InternetAddress pqr = new InternetAddress(s);
+					pqr.validate();
+				} catch (Exception e1) {
+					// TODO: handle exception
+					ans = false;
+				}
+				if (ans == false) {
+					email_valid = false;
 
+					JFrame f;
+					f = new JFrame();
+					JOptionPane.showMessageDialog(f, "Enter a valid id");
+				}
 			}
 		});
 		textField_1.setFont(new Font("Rockwell", Font.PLAIN, 16));
