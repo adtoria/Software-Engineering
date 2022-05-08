@@ -16,6 +16,14 @@ Also, we have included a new feature of Emergency Requests, which ignores all ot
 - Java Swing
 - Apache Netbeans 12.1
 
+# Demo :
+
+[Demo Video](https://www.youtube.com/watch?v=MgSAHk1NLWw)
+
+# Presentation :
+
+[Presentation](https://docs.google.com/presentation/d/1HjcjKibOTe0e8UI8xzbZ7puzJu4PIhfAO_eHErjIFLM/edit?usp=sharing)
+
 ## APIs and External Libraries Used
 - Java Mail API
 - Java Audio API
