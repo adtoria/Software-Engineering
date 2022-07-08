@@ -1,4 +1,4 @@
-# Software-Engineering
+# Software Engineering
 
 ## To Run this Project via Terminal / Command Line :
 - Open the root directory<br>
